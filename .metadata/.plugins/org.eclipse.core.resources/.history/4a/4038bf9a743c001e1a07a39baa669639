@@ -1,0 +1,5 @@
+package com.spring.orm1.springorm1.entity;
+
+public class Teacher {
+
+}
