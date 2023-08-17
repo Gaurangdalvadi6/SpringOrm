@@ -1,5 +1,9 @@
 package com.spring.orm1.springorm1;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,15 +14,83 @@ import com.spring.orm1.springorm1.entity.Teacher;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/orm1/springorm1/tconfig.xml");
-        TeacherDao teacherDao = context.getBean("teacherDao",TeacherDao.class);
-        Teacher teacher = new Teacher(25, "dhaval", "vatva");
-        int i = teacherDao.insert(teacher);
-        System.out.println("done " + i);
-    }
+public class App {
+	public static void main(String[] args) {
+//        System.out.println( "Hello World!" );
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/orm1/springorm1/tconfig.xml");
+		TeacherDao teacherDao = context.getBean("teacherDao", TeacherDao.class);
+//        Teacher teacher = new Teacher(25, "dhaval", "vatva");
+//        int i = teacherDao.insert(teacher);
+//        System.out.println("done " + i);
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		boolean go = true;
+		while (go) {
+			System.out.println("Press 1 For add new teacher");
+			System.out.println("Press 2 For display all teacher");
+			System.out.println("Press 3 For details of single teacher");
+			System.out.println("Press 4 For delete teacher");
+			System.out.println("Press 5 For update teacher");
+			System.out.println("press 6 for exit");
+
+			try {
+				int input = Integer.parseInt(br.readLine());
+
+				switch (input) {
+				case 1:
+					// add the teacher
+
+					System.out.println("enter user id : ");
+					int uId = Integer.parseInt(br.readLine());
+
+					System.out.println("enter user name : ");
+					String uName = br.readLine();
+
+					System.out.println("enter your city : ");
+					String uCity = br.readLine();
+
+					Teacher t = new Teacher();
+					t.setTeacherid(uId);
+					t.setTeacherName(uName);
+					t.setTeacherCity(uCity);
+
+					int r = teacherDao.insert(t);
+					System.out.println(r + "teacher added");
+					System.out.println("-----------------------------");
+					System.out.println();
+					break;
+				case 2:
+					// display all teacher
+					System.out.println("**************************");
+					List<Teacher> allTeacher = teacherDao.getAllTeacher();
+					for (Teacher tc : allTeacher) {
+						System.out.println(" teacherId : " + tc.getTeacherid() + " teacherName : " + tc.getTeacherName()
+								+ " teacherCity : " + tc.getTeacherCity());
+						System.out.println("--------------------------");
+					}
+					System.out.println("**************************");
+					break;
+				case 3:
+					// get details of the teacher
+					break;
+				case 4:
+					// delete the teacher
+					break;
+				case 5:
+					// update the teacher
+					break;
+				case 6:
+					// exit
+					go = false;
+					break;
+				default:
+					break;
+				}
+			} catch (Exception e) {
+				System.out.println("invalid input...");
+				System.out.println(e.getMessage());
+			}
+		}
+	}
 }

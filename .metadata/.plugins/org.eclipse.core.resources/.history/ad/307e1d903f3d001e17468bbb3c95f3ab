@@ -1,0 +1,22 @@
+package com.spring.orm1.springorm1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.spring.orm1.springorm1.dao.TeacherDao;
+import com.spring.orm1.springorm1.entity.Teacher;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/orm1/springorm1/tconfig.xml");
+        TeacherDao teacherDao = context.getBean("teacherDao",TeacherDao.class);
+        
+    }
+}
