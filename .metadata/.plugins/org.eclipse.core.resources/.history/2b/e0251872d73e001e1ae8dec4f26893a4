@@ -33,7 +33,6 @@ public class App {
 			System.out.println("Press 4 For delete teacher");
 			System.out.println("Press 5 For update teacher");
 			System.out.println("press 6 for exit");
-			System.out.println("press any number : ");
 
 			try {
 				int input = Integer.parseInt(br.readLine());
@@ -80,34 +79,12 @@ public class App {
 					
 					Teacher teacher = teacherDao.getTeacher(userId);
 					System.out.println("teacherId : " + teacher.getTeacherid() + " teacherName : " + teacher.getTeacherName() + " teacherCity : " + teacher.getTeacherCity());
-					System.out.println("--------------------------");
 					break;
 				case 4:
 					// delete the teacher
-					System.out.println("enter teacherid : ");
-					int Id = Integer.parseInt((br.readLine()));
-					
-					teacherDao.deleteTeacher(Id);
-					System.out.println("teacher has been removed.... " + Id);
 					break;
 				case 5:
 					// update the teacher
-					System.out.println("enter teacherid : ");
-					int teacherId = Integer.parseInt((br.readLine()));
-					
-					Teacher tr = teacherDao.getTeacher(teacherId);
-					System.out.println("teacherId : " +tr.getTeacherid());
-					System.out.println(" teacherName : ");
-					String teacherName = br.readLine();
-					System.out.println(" teacherCity : ");
-					String teacherCity = br.readLine();
-					tr.setTeacherid(teacherId);
-					tr.setTeacherName(teacherName);
-					tr.setTeacherCity(teacherCity);
-					
-					teacherDao.updateTeacher(tr);
-					System.out.println("data updated successfully..."  + tr);
-					
 					break;
 				case 6:
 					// exit

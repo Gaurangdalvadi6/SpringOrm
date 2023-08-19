@@ -84,30 +84,9 @@ public class App {
 					break;
 				case 4:
 					// delete the teacher
-					System.out.println("enter teacherid : ");
-					int Id = Integer.parseInt((br.readLine()));
-					
-					teacherDao.deleteTeacher(Id);
-					System.out.println("teacher has been removed.... " + Id);
 					break;
 				case 5:
 					// update the teacher
-					System.out.println("enter teacherid : ");
-					int teacherId = Integer.parseInt((br.readLine()));
-					
-					Teacher tr = teacherDao.getTeacher(teacherId);
-					System.out.println("teacherId : " +tr.getTeacherid());
-					System.out.println(" teacherName : ");
-					String teacherName = br.readLine();
-					System.out.println(" teacherCity : ");
-					String teacherCity = br.readLine();
-					tr.setTeacherid(teacherId);
-					tr.setTeacherName(teacherName);
-					tr.setTeacherCity(teacherCity);
-					
-					teacherDao.updateTeacher(tr);
-					System.out.println("data updated successfully..."  + tr);
-					
 					break;
 				case 6:
 					// exit
